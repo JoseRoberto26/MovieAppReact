@@ -1,3 +1,15 @@
+
+@font-face{
+  font-family: lato;
+  src: url(assets/Lato-Regular.ttf);
+}
+
+@font-face{
+  font-family: abel;
+  src: url(assets/Abel-Regular.ttf);
+}
+
+
 body {
   margin: 0;
   padding: 0;

@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 
-export default class film-item extends Component {
+export default class MovieItem extends Component {
   render() {
     return (
-      <div className="film-item">
+      <div className="movieitem">
         { this.props.children }
+
+
+
+
       </div>
     )
   }
