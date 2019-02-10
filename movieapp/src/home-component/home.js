@@ -1,51 +1,53 @@
 import React, { Component } from 'react';
 import MovieItem from '../movie-item/MovieItem.js';
+import $ from 'jquery'
 var api = require('../api/movieApi');
+var axios = require('axios');
+const apiKey = '5a240d5ac38592ee034f80a46ddeadbd';
 
 export default class Home extends Component {
   constructor(props){
     super(props);
-    this.state = {movieItems: <p>teste</p>};
+    this.state = {items: []};
   }
 
   componentDidMount(){
-      api.getPopularMovies().then(function (response) {
-          const results = response;
-          var movies = [];
-          results.forEach(movie => {
-              const movieItem = <MovieItem movie={movie}/>
-              movies.push(movieItem);
-          })
-          console.log(results);
+      var encodedURI = window.encodeURI('https://api.themoviedb.org/3/movie/popular?api_key='+apiKey+'&language=pt-BR');
+
+      return axios.get(encodedURI).then(response =>{
+          this.setState({items : response.data.results});
       })
   }
 
   searchMovies(searchTerm){
-      api.getMovies(searchTerm).then(function (response) {
-          const results = response;
-          var movies = [];
-          results.forEach(movie => {
-           const movieItem = <MovieItem movie={movie}/>
-           movies.push(movieItem);
-          })
-          console.log(results);
-      })
+      var encodedURI = window.encodeURI('https://api.themoviedb.org/3/search/movie?api_key='+apiKey+'&language=pt-BR&query='+searchTerm);
+
+      axios.get(encodedURI).then(response => {
+          this.setState({items : response.data.results});
+      });
   }
 
   searchHandler(event){
-      console.log(event.target.value);
       this.searchMovies(event.target.value);
   }
 
 
   render() {
+
+      let renderItems;
+      const items = this.state.items;
+      renderItems = items.map((item) => {
+          return <MovieItem key ={item.id} movie ={item}/>;
+      })
+
+
     return (
       <div className="home">
         { this.props.children }
 
         <input type="text" onChange={this.searchHandler.bind(this)} className={"searchInput"} placeholder={"Digite"}/>
+          {renderItems}
 
-          {this.state.movieItems}
 
       </div>
     )
