@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../common/header';
+import YoutubeEmbedVideo from "youtube-embed-video";
+
 var axios = require('axios');
 const apiKey = '5a240d5ac38592ee034f80a46ddeadbd';
 const imgBaseUrl = "http://image.tmdb.org/t/p/w185";
@@ -7,17 +8,27 @@ const genreNames = [];
 export default class MovieDetails extends Component {
 constructor(props){
     super(props);
-    this.state = {details: []};
+    this.state = {details: [], videoID: ""};
 
 }
-    componentDidMount(){
+    componentWillMount(){
         var encodedURI = window.encodeURI('https://api.themoviedb.org/3/movie/'+this.props.match.params.movieId+'?api_key='+apiKey+'&language=pt-BR');
-
-        return axios.get(encodedURI).then(response =>{
+        var videoURI = window.encodeURI('https://api.themoviedb.org/3/movie/'+this.props.match.params.movieId+'/videos?api_key='+apiKey+'&language=pt-BR');
+         axios.get(encodedURI).then(response =>{
             this.setState({details : response.data});
             console.log(this.state);
             this.state.details.genres.forEach(genre =>{
                 genreNames.push(genre.name);
+                console.log(genreNames);
+            })
+        })
+
+        axios.get(videoURI).then(response => {
+            console.log(response);
+            response.data.results.forEach(trailer => {
+                if(trailer){
+                    this.state.videoID = trailer.key;
+                }
             })
         })
     }
@@ -59,10 +70,7 @@ constructor(props){
 
         </div>
 
-        <iframe className="trailerFrame">
-
-        </iframe>
-
+          <YoutubeEmbedVideo videoId={this.state.videoID}/>
 
       </div>
     )
