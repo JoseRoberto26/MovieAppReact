@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import MovieItem from '../movie-item/MovieItem.js';
-import $ from 'jquery'
-var api = require('../api/movieApi');
 var axios = require('axios');
 const apiKey = '5a240d5ac38592ee034f80a46ddeadbd';
 
@@ -32,8 +30,9 @@ export default class Home extends Component {
   }
 
 
-  render() {
 
+
+  render() {
       let renderItems;
       const items = this.state.items;
       renderItems = items.map((item) => {

@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route} from "react-router-dom";
 
 
 export default class MovieItem extends Component {
 
-  render() {
+
+
+    render() {
+
+
+
     return  (
-      <div className="movieitem">
+      <div className="movieitem" onClick={this.redirection}>
+
+          <h1>{this.props.movie.title}</h1>
 
       </div>
     )
   }
+    redirection = () =>{
+        this.context.router.push('/movie/'+this.props.movie.id+'');
+    }
 }
