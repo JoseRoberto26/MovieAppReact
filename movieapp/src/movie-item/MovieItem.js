@@ -52,10 +52,10 @@ export default class MovieItem extends Component {
 
     render() {
     return  (
-      <div className="movieitem" onClick={this.setRedirect}>
+      <div className="movieitem" style={{marginTop: "40px"}} onClick={this.setRedirect}>
           {this.renderRedirect()}
 
-          <main className="main-cointaner">
+          <main className="main-container">
               <div className="img-box">
                   <img className="movie-poster" src={this.imagePath(this.props.movie.poster_path)}/>
               </div>
@@ -82,7 +82,7 @@ export default class MovieItem extends Component {
                           {this.overviewTreatment(this.props.movie.overview)}
                       </div>
                       <div className="genres-field">
-                          <span className="genre-box">{this.props.genres}</span>
+                          {this.props.genres.map(genre =><span key={genre} className="genre-box">{genre}</span> )}
                       </div>
                   </div>
               </div>

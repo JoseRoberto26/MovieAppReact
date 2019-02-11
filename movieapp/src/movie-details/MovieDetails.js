@@ -5,7 +5,7 @@ import YoutubeEmbedVideo from "youtube-embed-video";
 var axios = require('axios');
 const apiKey = '5a240d5ac38592ee034f80a46ddeadbd';
 const imgBaseUrl = "http://image.tmdb.org/t/p/w185";
-const genreNames = [];
+
 export default class MovieDetails extends Component {
 constructor(props){
     super(props);
@@ -13,6 +13,9 @@ constructor(props){
 
 }
     componentWillMount(){
+        this.setState({genreNamesState: []});
+        this.setState({details: []});
+        let genreNames = [];
         var encodedURI = window.encodeURI('https://api.themoviedb.org/3/movie/'+this.props.match.params.movieId+'?api_key='+apiKey+'&language=pt-BR');
         var videoURI = window.encodeURI('https://api.themoviedb.org/3/movie/'+this.props.match.params.movieId+'/videos?api_key='+apiKey+'&language=pt-BR');
          axios.get(encodedURI).then(response =>{
@@ -24,9 +27,9 @@ constructor(props){
         })
 
         axios.get(videoURI).then(response => {
-            console.log(response);
             response.data.results.forEach(trailer => {
-                if(trailer){
+                console.log(trailer);
+                if(trailer.key){
                     this.setState({videoID: trailer.key})
                 }
             })
@@ -103,56 +106,71 @@ constructor(props){
       <div className="moviedetails">
         { this.props.children }
 
-        <div>
+        <main className="main-container-details">
+            <section className="title-details">
+                <h1 className="title-details-text">{this.state.details.title}</h1>
+                <div className="date-text">
+                    <Moment format="DD/MM/YYYY">
+                        {this.state.details.release_date}
+                    </Moment>
+                </div>
+            </section>
 
-          <div className="title">
-              {this.state.details.title}
-              <Moment format="DD/MM/YYYY">
-                  {this.state.details.release_date}
-                  </Moment>
-          </div>
+            <section className="content-box-details">
+                <div className="main-info-box">
+                    <h2 className="overview-text">Sinopse</h2>
+                    <article className="details-overview">{this.state.details.overview}</article>
+                    <h2 className="overview-text">Informações</h2>
+                    <div className="info-content-box">
+                        <div className="info-content-item">
+                            <h3 className="content-item-name">Situação</h3>
+                            <p className="content-item-value"> {this.formatStatus(this.state.details.status)}</p>
+                        </div>
+                        <div className="info-content-item">
+                            <h3 className="content-item-name">Idioma</h3>
+                            <p className="content-item-value"> {this.formatLanguage(this.state.details.original_language)}</p>
+                        </div>
+                        <div className="info-content-item">
+                            <h3 className="content-item-name">Duração</h3>
+                            <p className="content-item-value"> {this.formatDuration(this.state.details.runtime)}</p>
+                        </div>
+                        <div className="info-content-item">
+                            <h3 className="content-item-name">Orçamento</h3>
+                            <p className="content-item-value"> {this.formatToDolar(this.state.details.budget)}</p>
+                        </div>
+                        <div className="info-content-item">
+                            <h3 className="content-item-name">Receita</h3>
+                            <p className="content-item-value"> {this.formatToDolar(this.state.details.revenue)}</p>
+                        </div>
+                        <div className="info-content-item">
+                            <h3 className="content-item-name">Lucro</h3>
+                            <p className="content-item-value"> {this.calculateProfit(this.state.details.revenue, this.state.details.budget)}</p>
+                        </div>
+                    </div>
+                    <div className="genre-score-box-details">
+                        <div className="genres-field">
+                            {this.state.genreNamesState.map( genre => <span key={genre} className="genre-box">{genre}</span>)}
+                        </div>
+                        <div className="score-circle-details-box">
+                            <div className="score-circle-details">
+                                {this.formatScore(this.state.details.vote_average, this.state.details.vote_count)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="details-poster">
+                    <img style={{    width: '100%',
+                        height: '100%'}} src={imgBaseUrl+this.state.details.poster_path}/>
+                </div>
+            </section>
 
-          <div className="boxBody">
+            <section className="video-box">
 
-          <div className="leftBox">
+                {this.state.videoID && <YoutubeEmbedVideo width={1700} height={820} videoId={this.state.videoID}/>}
+            </section>
 
-          <section className="overview">
-              <p>Sinopse</p>
-              {this.state.details.overview}
-          </section>
+        </main>
 
-          <section className="info">
-            <p>Informações</p>
-              Situação
-              <p> {this.formatStatus(this.state.details.status)}</p>
-              Idioma
-              <p>{this.formatLanguage(this.state.details.original_language)}</p>
-              Duração
-              <p>{this.formatDuration(this.state.details.runtime)}</p>
-              Orçamento
-              <p>{this.formatToDolar(this.state.details.budget)}</p>
-              Receita
-              <p>{this.formatToDolar(this.state.details.revenue)}</p>
-              Lucro
-              <p>{this.calculateProfit(this.state.details.revenue, this.state.details.budget)}</p>
-
-          </section>
-
-          <section className="genre-score">
-              <p>{this.state.genreNamesState}</p>
-              Score -String não fica-
-              <p>{this.formatScore(this.state.details.vote_average, this.state.details.vote_count)}</p>
-          </section>
-
-          </div>
-
-          <img src={imgBaseUrl+this.state.details.poster_path}/>
-
-          </div>
-
-        </div>
-
-          <YoutubeEmbedVideo videoId={this.state.videoID}/>
 
       </div>
     )

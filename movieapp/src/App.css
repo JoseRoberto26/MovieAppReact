@@ -1,5 +1,6 @@
 *{
     box-sizing: border-box;
+    margin: 0;
 }
 .home{
     width: 80%;
@@ -57,75 +58,184 @@
 .circle-score{
     font-size: x-large;
     position: relative;
-    margin: 18px;
+    margin: 0 8px;
     padding: 10px 5px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+    border-radius: 70%;
     background-color: #106A99;
-    border: 5px solid #00e8e4;
-    box-shadow: 0 0 0 2px #106A99;
+    border: 3px solid #00e8e4;
+    box-shadow: 0 0 0 1px #106A99;
     top: 50%;
 }
 .title-box{
     display: flex;
-    font-size: xx-large;
+    font-size: x-large;
 }
 .self-end{
     align-self: flex-end;
+    padding: 0;
+    margin: 0;
 }
 .date-box{
     display: flex;
     font-family: 'abel', 'lato';
     font-weight: 100;
-    background: #106A99;
-    color: #00e8e4;
+    color: #646464;
     cursor: pointer;
-    padding-top: 0.1rem;
-    margin-left: 10px;
+    padding-top: 3px;
+    margin-left: 15px;
 }
 .date-space{
     flex: 0 0 60px;
 }
 
 .movie-info-box{
+    padding: 1rem 2rem;
+
     color: #646464;
     font-family: 'abel', 'lato';
-    padding: 1rem 2rem;
 }
 
 .content{
     font-family: 'abel', 'lato';
-    padding: 1rem 2rem;
     text-align: center;
+
     padding: 0;
     font-size: small;
 }
 .genres-field{
     display: flex;
-    font-family: 'abel', 'lato';
-    max-width: 80%;
-    margin: 1rem -0.5rem;
     flex-direction: row;
     flex-wrap: wrap;
+
+    font-family: 'abel', 'lato';
+    max-width: 80%;
     width: 80%;
     margin: 0;
 }
 .genre-box{
-    padding: 0.2rem 1rem;
-    text-align: center;
     background-color: white;
     color: #106A99;
-    border: 1px solid #106A99;
-    border-radius: 15px;
-    margin: 0.2rem 0.5rem;
+    border: 2px solid #106A99;
+
+    text-align: center;
+
+    border-radius: 12px;
+    padding: 0.3rem 1.1rem;
+    margin: 0.3rem 0.7rem;
     font-size: small;
-    cursor: pointer;
 }
-.genre-box:hover{
+
+
+
+
+
+
+
+
+.main-container-details{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #ebebeb;
+    margin-top: 20px;
+}
+.title-details{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    color: #106A99;
+    padding: 1rem;
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.title-details-text{
+    flex-grow: 2;
+    padding: 0 1rem;
+text-align:left;
+
+}
+.date-text{
+    font-family: 'abel', 'lato';
+    color: #646464;
+}
+
+.content-box-details{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    background: #f2f2f2;
+    align-items: stretch;
+}
+
+.main-info-box{
+    flex: 70;
+    padding: 1.7rem;
+    background: #f2f2f2;
+}
+.overview-text{
+    font-size: large;
+    padding: 0.1rem 0;
+    font-weight: normal;
+    border-bottom: 2px solid #00e8e4;
+    color: #106A99;
+    text-align: left;
+}
+.details-overview{
+    font-family: 'abel', 'lato';
+    margin: 1.2rem 0;
+}
+.info-content-box{
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 1.1rem;
+    display: flex;
+}
+.content-item-name{
+    font-family: 'abel', 'lato';
+    font-weight: bold;
+    font-size: large;
+    color: #106A99;
+    text-align: center;
+    padding: 0;
+}
+.content-item-value{
+    font-family: 'abel', 'lato';
+    color: #646464;
+    font-size: small;
+}
+.genre-score-box-details{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+.score-circle-details-box{
+    width: 20%;
+    justify-content: center;
+    display: flex;
+}
+.score-circle-details{
+    width: 100px;
+    height: 100px;
     background-color: #106A99;
-    color: white;
+    border: 4px solid #00e8e4;
+    box-shadow: 0 0 0 1px #106A99;
+    text-align: center;
+    padding-top: 25px;
+    font-size: 40px;
+    border-radius: 100%;
+font-family: 'abel', 'lato';
+    color: #00e8e4;
 }
+.details-poster{
+    flex: 20%;
+}
+
+
 
 #react-paginate ul {
     display: inline-block;
