@@ -19,6 +19,16 @@
   color: #00e8e4;
 }
 
+#react-paginate ul {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#react-paginate li {
+    display: inline-block;
+}
+
 ::-webkit-input-placeholder{
   color:rgb(128, 173, 201);
   padding-left: 20px;

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import MovieItem from '../movie-item/MovieItem.js';
+import Pagination from "react-js-pagination";
+
+
 var axios = require('axios');
 const apiKey = '5a240d5ac38592ee034f80a46ddeadbd';
 const pageLimit = 5;
@@ -38,6 +41,10 @@ export default class Home extends Component {
   searchHandler(event){
       this.searchMovies(event.target.value);
   }
+  handlePageChange(event){
+      this.setState({currentPage: event})
+      console.log(this.state.currentPage);
+  }
 
 
 
@@ -55,16 +62,14 @@ export default class Home extends Component {
       renderItems = currentItems.map((item) => {
           let itemGenreNames = [];
           item.genre_ids.forEach(itemGenre => {
-              console.log(item);
               genres.forEach(genre => {
-                  if(genre.id == itemGenre){
+                  if(genre.id === itemGenre){
                       itemGenreNames.push(genre.name);
                   }
               })
           })
           return <MovieItem key ={item.id} movie ={item} genres={itemGenreNames}/>;
-      })
-
+      });
 
     return (
       <div className="home">
@@ -73,8 +78,13 @@ export default class Home extends Component {
         <input type="text" onChange={this.searchHandler.bind(this)} className={"searchInput"} placeholder={"Digite"}/>
           {renderItems}
 
-
-
+          <Pagination
+              activePage={this.state.currentPage}
+              itemsCountPerPage={pageLimit}
+              totalItemsCount={items.length}
+              pageRangeDisplayed={5}
+              onChange={this.handlePageChange.bind(this)}
+          />
       </div>
     )
   }

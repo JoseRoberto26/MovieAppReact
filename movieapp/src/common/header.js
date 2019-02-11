@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {NavLink} from "react-router-dom";
 export default class Header extends Component {
 
   render() {
@@ -10,14 +11,16 @@ export default class Header extends Component {
           paddingBottom: '7px'
 
       }} >
-        <h1 style={{
+        <NavLink activeStyle={{
             color: '#00e8e4',
             fontFamily: 'lato',
             fontFamily: 'abel',
+            fontSize: '40px',
+            textDecoration: 'none'
         }
-        } >
+        } to="/">
           Movies
-        </h1>
+        </NavLink>
       </div>
     )
   }

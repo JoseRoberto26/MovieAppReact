@@ -24,7 +24,10 @@ export default class MovieItem extends Component {
         }
     }
 
-    formatScore(number){
+    formatScore(number, count){
+        if(count === 0){
+            return "--";
+        }
         return number *10 + "%";
     }
 
@@ -47,7 +50,7 @@ export default class MovieItem extends Component {
           <Moment format="DD/MM/YYYY">
               {this.props.movie.release_date}
           </Moment>
-          <p>{this.formatScore(this.props.movie.vote_average)}</p>
+          <p>{this.formatScore(this.props.movie.vote_average, this.props.movie.vote_count)}</p>
           <p>{this.props.movie.overview}</p>
           <img src={this.imagePath(this.props.movie.poster_path)}/>
 
