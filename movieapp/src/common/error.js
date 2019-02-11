@@ -6,7 +6,7 @@ export default class error extends Component {
       <div className="error">
         { this.props.children }
 
-        <p>Not Found</p>
+        <img alt="" src="../assets/error-404.png"/>
 
       </div>
     )
