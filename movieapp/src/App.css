@@ -1,4 +1,99 @@
+.main-container{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1.5fr 4fr;
+}
+.movie-box{
+    background: #ebebeb;
+    display: grid;
+    display: flex;
+}
+.movie-poster{
+    cursor: pointer;
+}
+.title-header{
+    display: flex;
+    background: #106A99;
+    color: #00e8e4;
+    cursor: pointer;
+    font-family: 'abel', 'lato';
+    font-weight: 100;
+}
+.score-circle-box{
+    flex: 0 0 60px;
+}
+.circle-score{
+    font-size: x-large;
+    position: relative;
+    margin: 18px;
+    padding: 10px 5px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #106A99;
+    border: 5px solid #00e8e4;
+    box-shadow: 0 0 0 2px #106A99;
+    top: 50%;
+}
+.title-box{
+    display: flex;
+    font-size: xx-large;
+}
+.self-end{
+    align-self: flex-end;
+}
+.date-box{
+    display: flex;
+    font-family: 'abel', 'lato';
+    font-weight: 100;
+    background: #106A99;
+    color: #00e8e4;
+    cursor: pointer;
+    padding-top: 0.1rem;
+    margin-left: 10px;
+}
+.date-space{
+    flex: 0 0 60px;
+}
 
+.movie-info-box{
+    color: #646464;
+    font-family: 'abel', 'lato';
+    padding: 1rem 2rem;
+}
+
+.content{
+    font-family: 'abel', 'lato';
+    padding: 1rem 2rem;
+    text-align: center;
+    padding: 0;
+    font-size: small;
+}
+.genres-field{
+    display: flex;
+    font-family: 'abel', 'lato';
+    max-width: 80%;
+    margin: 1rem -0.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 0;
+}
+.genre-box{
+    padding: 0.2rem 1rem;
+    text-align: center;
+    background-color: white;
+    color: #106A99;
+    border: 1px solid #106A99;
+    border-radius: 15px;
+    margin: 0.2rem 0.5rem;
+    font-size: small;
+    cursor: pointer;
+}
+.genre-box:hover{
+    background-color: #106A99;
+    color: white;
+}
 
 .itemHeader{
   background-color: #106A99;
