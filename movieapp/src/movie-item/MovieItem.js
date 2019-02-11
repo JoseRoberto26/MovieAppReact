@@ -57,7 +57,7 @@ export default class MovieItem extends Component {
 
           <main className="main-container">
               <div className="img-box">
-                  <img className="movie-poster" src={this.imagePath(this.props.movie.poster_path)}/>
+                  <img alt="" className="movie-poster" src={this.imagePath(this.props.movie.poster_path)}/>
               </div>
 
               <div className="movie-box">

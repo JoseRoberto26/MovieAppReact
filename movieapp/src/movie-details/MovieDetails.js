@@ -85,7 +85,7 @@ constructor(props){
     }
 
     calculateProfit(revenue, budget){
-    if(revenue == 0){
+    if(revenue === 0){
         return "--";
     }
     else{
@@ -159,7 +159,7 @@ constructor(props){
                     </div>
                 </div>
                 <div className="details-poster">
-                    <img style={{    width: '100%',
+                    <img alt="" style={{    width: '100%',
                         height: '100%'}} src={imgBaseUrl+this.state.details.poster_path}/>
                 </div>
             </section>

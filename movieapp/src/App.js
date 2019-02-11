@@ -7,9 +7,6 @@ import MovieDetails from './movie-details/MovieDetails';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 
 class App extends Component {
-  constructor(props){
-    super(props)
-  }
 
   render() {
     return (

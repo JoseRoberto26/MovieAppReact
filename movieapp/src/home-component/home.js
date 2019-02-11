@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import MovieItem from '../movie-item/MovieItem.js';
-import Pagination from "react-js-pagination";
 import ReactPaginate from "react-paginate";
 
 var axios = require('axios');
@@ -17,7 +16,7 @@ export default class Home extends Component {
       var genreURI = window.encodeURI('https://api.themoviedb.org/3/genre/movie/list?api_key='+apiKey+'&language=pt-BR')
 
       axios.get(genreURI).then(response => {
-          this.state.genres = response.data.genres;
+          this.setState({genres: response.data.genres});
       })
 
   }
