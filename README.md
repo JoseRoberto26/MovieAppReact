@@ -1,11 +1,11 @@
 # MovieAppReact
 
-###Descrição
+### Descrição
 
    Aplicação web para buscar filmes utilizando a API do MovieDB, onde é possível obter informações e detalhes
    sobre o filme como orçamento, receita, avaliação, idioma, trailer, etc.
         
-###Composição
+### Composição
 
 - React v16.8.1
 - Gerenciador de pacotes NPM 
@@ -26,7 +26,7 @@ Funcionalidades pendentes dado o prazo de entrega:
 - Melhorias nas boas práticas utilizando React;
 - Utilização do SASS
 
-###Planejado 
+### Planejado 
 Breve explicação da suposta implementação de algumas funcionalidades pendentes
 
 - Redux: Inicialmente, instalar o pacote react-redux que auxiliar na implementação do Redux em projetos feitos em React.
