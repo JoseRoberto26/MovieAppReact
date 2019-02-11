@@ -52,7 +52,7 @@ export default class MovieItem extends Component {
 
     render() {
     return  (
-      <div className="movieitem" style={{marginTop: "40px"}} onClick={this.setRedirect}>
+      <div className="movieitem" style={{marginTop: "40px", marginRight: "190px"}} onClick={this.setRedirect}>
           {this.renderRedirect()}
 
           <main className="main-container">

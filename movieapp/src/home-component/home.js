@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MovieItem from '../movie-item/MovieItem.js';
 import Pagination from "react-js-pagination";
-
+import ReactPaginate from "react-paginate";
 
 var axios = require('axios');
 const apiKey = '5a240d5ac38592ee034f80a46ddeadbd';
@@ -42,8 +42,8 @@ export default class Home extends Component {
       this.searchMovies(event.target.value);
   }
   handlePageChange(event){
-      this.setState({currentPage: event})
-      console.log(this.state.currentPage);
+      event.selected = event.selected + 1;
+      this.setState({currentPage: event.selected})
   }
 
 
@@ -75,16 +75,19 @@ export default class Home extends Component {
       <div className="home">
         { this.props.children }
 
-        <input type="text" onChange={this.searchHandler.bind(this)} className={"searchInput"} placeholder={"Digite"}/>
+        <input type="text" onChange={this.searchHandler.bind(this)} className={"searchInput"} placeholder={"Busque um filme por nome, ano ou gênero..."}/>
           {renderItems}
 
-          <Pagination
-              activePage={this.state.currentPage}
-              itemsCountPerPage={pageLimit}
-              totalItemsCount={items.length}
-              pageRangeDisplayed={5}
-              onChange={this.handlePageChange.bind(this)}
-          />
+          <div className="pagination">
+              <ReactPaginate
+                  pageCount={items.length / pageLimit}
+                  marginPagesDisplayed={2}
+                  onPageChange={this.handlePageChange.bind(this)}
+                  pageRangeDisplayed={5}
+                  previousLabel={'<'}
+                  nextLabel={'>'}/>
+          </div>
+
       </div>
     )
   }
