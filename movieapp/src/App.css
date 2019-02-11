@@ -1,3 +1,36 @@
+*{
+    box-sizing: border-box;
+}
+.home{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.itemHeader{
+    background-color: #106A99;
+    float: right;
+    width: 100%;
+    height: 60px;
+    margin: auto;
+}
+
+.searchInput {
+    padding: 7px;
+    border: 6px;
+    border-radius: 20px;
+    width: 100%;
+    font-family: 'abel', 'lato';
+    margin-top: 30px;
+    background-color: rgb(233, 229, 229);
+    padding-left: 20px;
+}
+
+::-webkit-input-placeholder {
+    color: rgb(128, 173, 201);
+}
+
+
 .main-container{
     display: grid;
     width: 100%;
@@ -6,7 +39,6 @@
 .movie-box{
     background: #ebebeb;
     display: grid;
-    display: flex;
 }
 .movie-poster{
     cursor: pointer;
@@ -95,25 +127,6 @@
     color: white;
 }
 
-.itemHeader{
-  background-color: #106A99;
-  float: right;
-  width: 100%;
-  height: 60px;
-  margin: auto;
-}
-
-.searchInput{
-  padding: 7px;
-  border: 6px;
-  border-radius: 20px;
-  width: 80%;
-  font-family: 'abel', 'lato';
-  margin-top: 30px;
-  background-color: rgb(233, 229, 229);
-  color: #00e8e4;
-}
-
 #react-paginate ul {
     display: inline-block;
     padding-left: 15px;
@@ -122,11 +135,6 @@
 
 #react-paginate li {
     display: inline-block;
-}
-
-::-webkit-input-placeholder{
-  color:rgb(128, 173, 201);
-  padding-left: 20px;
 }
 
 .App {
