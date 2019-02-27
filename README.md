@@ -29,7 +29,7 @@ Funcionalidades pendentes dado o prazo de entrega:
 ### Planejado 
 Breve explicação da suposta implementação de algumas funcionalidades pendentes
 
-- Redux: Inicialmente, instalar o pacote react-redux que auxiliar na implementação do Redux em projetos feitos em React.
+- Redux: Inicialmente, instalar o pacote react-redux que auxilia na implementação do Redux em projetos feitos em React.
 Aplicação dos principais conceitos do Redux com a criação de Store(Containers), Actions, Reducers, Provider.
 
 - PWA: Para tornar uma aplicação React PWA, é fundamental a criação de um ServiceWorker, que irá ser responsável pelo cache do app e dos seus assets.
